@@ -1,0 +1,20 @@
+[package]
+name = "frontend"
+version = "0.1.0"
+edition = "2021"
+authors = ["Philodi <me@philodi.com>"]
+description = "Shared types and structures for Rust Chat application"
+repository = "https://github.com/philodi-dev/rust-chat-websocket"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { version = "0.21", features = ["csr"] }
+yew-hooks = "0.3"
+web-sys = { version = "0.3", features = ["HtmlTextAreaElement"] }
+
+common = { path = "../common" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
