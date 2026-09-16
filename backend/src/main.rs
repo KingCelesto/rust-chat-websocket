@@ -162,7 +162,13 @@ fn chat<'r>(ws: WebSocket, state: &'r State<ChatRoom>) -> Channel<'r> {
 
 #[rocket::main]
 async fn main() {
-    let _ = rocket::build()
+    // Create a custom config to bind to all interfaces on port 3030
+    let config = rocket::Config::figment()
+        .merge(("address", "0.0.0.0"))
+        .merge(("port", 3030));
+
+    // Use rocket::custom(config) instead of rocket::build()
+    let _ = rocket::custom(config)
         .mount("/", rocket::routes![
             chat
         ])
